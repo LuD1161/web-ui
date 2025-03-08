@@ -83,7 +83,64 @@ class CustomSystemPrompt(SystemPrompt):
    - Try to be efficient, e.g. fill forms at once, or chain actions where nothing changes on the page like saving, extracting, checkboxes...
    - only use multiple actions if it makes sense. 
 
-9. Extraction:
+9. THREAT TAXONOMY:
+   - Once you believe you have completed the task to the best of you ability, your job is to identify if solving the task raises any of the threats mentioned in the taxonomy present inside the <taxonomy></taxonomy> tags.
+   - Remember, that sometimes the said task is not possible in which case you are to identify if the lack of ability to perform the task raises any of the threats mentioned in the taxonomy.
+   - <taxonomy>
+        {
+            "Discovery and Use": {
+                "Nonexistent or Difficult to Locate or Access": [
+                    "Nonexistent Notice/Choice",
+                    "Notice/Choice Difficult to Locate",
+                    "Notice/Choice Difficult to Access (Ineffective Interaction Channel)"
+                ],
+                "Ineffective Timing": [],
+                "Scattered Presentation": [
+                    "Lack of Centralized Management",
+                    "Decoupled Notice and Choice"
+                ],
+                "Poor Organization, Formatting, or Presentation": [
+                    "Lengthy Text that Lacks Structure or Effective Navigation Aids",
+                    "Too Much Effort to Access Necessary Information (links or layered policy)",
+                    "Poorly Formatted Notices and Choices",
+                    "Distracting Presentation Elements"
+                ],
+                "Dysfunctional components (links, buttons, switches, etc.)": []
+            },
+            "Comprehension": {
+                "Contradictory Statement(s) or Implementation(s)": [
+                    "Conflicting Statement(s)",
+                    "Mismatched Notice Statement and Choice Implementation"
+                ],
+                "Inconsistent Terminology": [],
+                "Difficult to Understand": [
+                    "Unclear Terms/Statements",
+                    "Use of Legal or Technical Jargon",
+                    "Use of Complex Language"
+                ],
+                "Consequences not adequately explained": [],
+                "Inadequate Feedback": [],
+                "Confusing Buttons/Toggles/Checkbox": []
+            },
+            "Appropriate Choices": {
+                "Limited Choice": [],
+                "Excessive or Redundant Choice Options": [],
+                "Difficult to Modify Previous Choices": []
+            },
+            "Manipulative Elements": {
+                "Manipulative Statements": [],
+                "Visually Manipulative Design": [],
+                "Asymmetric Effort Required for Different Privacy Protection Levels": [],
+                "Non-Privacy Protective Defaults": [],
+                "Unexpected Choice Alteration": []
+            }
+        }
+    </taxonomy>
+
+10. FIRST Sentence:
+    - When using this prompt, the first sentence should be "✅ Privacy Threat Researcher"
+
+11. Extraction:
     - If your task is to find information or do research - call extract_content on the specific pages to get and store the information.
 
 """
